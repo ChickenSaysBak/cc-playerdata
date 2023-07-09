@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS playerdata (
+	uuid UUID NOT NULL,
+	username VARCHAR(16) NOT NULL,
+	first_played BIGINT NOT NULL,
+	last_played BIGINT NOT NULL,
+	rank SMALLINT NOT NULL DEFAULT 0,
+	PRIMARY KEY (uuid)
+);
