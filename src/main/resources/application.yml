@@ -6,7 +6,3 @@ spring:
   sql:
     init:
       mode: always
-server:
-  error:
-    whitelabel:
-      enabled: false
