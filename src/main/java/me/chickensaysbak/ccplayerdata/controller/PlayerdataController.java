@@ -4,11 +4,10 @@ import me.chickensaysbak.ccplayerdata.model.Playerdata;
 import me.chickensaysbak.ccplayerdata.model.Rank;
 import me.chickensaysbak.ccplayerdata.repository.PlayerdataRepository;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @RestController
@@ -65,7 +64,7 @@ public class PlayerdataController {
         try {
             r = Rank.fromString(rank);
         } catch (IllegalArgumentException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "That rank doesn't exist.");
+            throw new NoSuchElementException("That rank doesn't exist.");
         }
 
         return repository.findAllByRank(r.ordinal(), getPageRequest(limit));
@@ -74,8 +73,7 @@ public class PlayerdataController {
 
     @GetMapping("/uuid/{uuid}")
     public Playerdata findByUuid(@PathVariable UUID uuid) {
-        return repository.findByUuid(uuid)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "That player was not found."));
+        return repository.findByUuid(uuid).orElseThrow(() -> new NoSuchElementException("That player was not found."));
     }
 
     @GetMapping("/username/{username}")
