@@ -20,7 +20,7 @@ public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUI
     List<Playerdata> findAllByOrderByFirstPlayedDesc(Pageable pageable);
     Optional<Playerdata> findByUuid(UUID uuid);
     List<Playerdata> findByUsername(String username, Pageable pageable);
-    List<Playerdata> findAllByUsernameContainingIgnoreCase(String search, Pageable pageable);
+    List<Playerdata> findAllByUsernameContainingIgnoreCase(String keyword, Pageable pageable);
 
     @Query("""
             SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
