@@ -11,11 +11,7 @@ import java.util.UUID;
 
 public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUID> {
 
-    default List<Playerdata> findAll(Pageable pageable) {
-        if (pageable == null) return findAll();
-        else return findAll(pageable);
-    }
-
+    List<Playerdata> findAll(Pageable pageable);
     List<Playerdata> findAllByOrderByFirstPlayed(Pageable pageable);
     List<Playerdata> findAllByOrderByFirstPlayedDesc(Pageable pageable);
     Optional<Playerdata> findByUuid(UUID uuid);
