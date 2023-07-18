@@ -6,3 +6,7 @@ spring:
   sql:
     init:
       mode: always
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    operationsSorter: alpha
