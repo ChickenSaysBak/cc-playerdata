@@ -1,8 +1,7 @@
 # cc-playerdata
 REST API for retrieving CozyCloud playerdata.
 
-[![Documentation](https://img.shields.io/badge/Documentation-dark%20green?logo=swagger&logoColor=black
-)]([https://discord.gg/vBEWAuY](https://cc-playerdata-webapp.azuremicroservices.io))
+[![Documentation](https://img.shields.io/badge/Documentation-dark%20green?logo=swagger&logoColor=black)](https://cc-playerdata-webapp.azuremicroservices.io)
 [![Discord](https://img.shields.io/discord/280048938000580609?logo=discord&logoColor=white&label=Discord&color=7289da)](https://discord.gg/vBEWAuY)
 
 ## Example usage
