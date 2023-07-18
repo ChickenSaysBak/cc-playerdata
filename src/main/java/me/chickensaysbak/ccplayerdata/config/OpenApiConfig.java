@@ -13,12 +13,12 @@ public class OpenApiConfig {
     public OpenAPI config() {
 
         Contact contact = new Contact()
-                .name("CozyCloud")
-                .url("https://discord.gg/vBEWAuY");
+                .name("GitHub")
+                .url("https://github.com/ChickenSaysBak/cc-playerdata");
 
         Info info = new Info()
                 .title("CozyCloud Playerdata API")
-                .description("API for retrieving CozyCloud playerdata.")
+                .description("REST API for retrieving CozyCloud playerdata. Find example usage on the GitHub page below.")
                 .version("1.0.0")
                 .contact(contact);
 
