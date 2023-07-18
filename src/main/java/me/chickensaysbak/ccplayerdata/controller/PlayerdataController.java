@@ -45,7 +45,7 @@ public class PlayerdataController {
     }
 
     @GetMapping("/year/{year}")
-    @Operation(description = "Retrieves every player who joined during a certain year.")
+    @Operation(description = "Retrieves every player who joined during a certain year ordered by who joined first.")
     public List<Playerdata> findByYearJoined(@PathVariable Integer year, @RequestParam(required = false, defaultValue = "0") Integer limit) {
         return repository.findAllBetweenTimes(getMillisFromYear(year), getMillisFromYear(year+1), getPageable(limit));
     }
