@@ -19,7 +19,7 @@ public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUI
     List<Playerdata> findAllByUsernameContainingIgnoreCase(String keyword, Pageable pageable);
 
     @Query("""
-            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
             FROM Playerdata
             WHERE firstPlayed >= :start AND firstPlayed < :end
             ORDER BY firstPlayed
@@ -27,35 +27,35 @@ public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUI
     List<Playerdata> findAllBetweenTimes(Long start, Long end, Pageable pageable);
 
     @Query("""
-            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
             FROM Playerdata
             ORDER BY lastPlayed - firstPlayed DESC
             """)
     List<Playerdata> findAllByMostTime(Pageable pageable);
 
     @Query("""
-            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
             FROM Playerdata
             ORDER BY lastPlayed - firstPlayed
             """)
     List<Playerdata> findAllByLeastTime(Pageable pageable);
 
     @Query("""
-            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
             FROM Playerdata
             WHERE rank > 0
             """)
     List<Playerdata> findAllRanked(Pageable pageable);
 
     @Query("""
-            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
             FROM Playerdata
             WHERE rank = :rank
             """)
     List<Playerdata> findAllByRank(Integer rank, Pageable pageable);
 
     @Query("""
-            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank)
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
             FROM Playerdata
             WHERE firstPlayed < (SELECT lastPlayed FROM Playerdata WHERE uuid = :uuid)
               AND lastPlayed > (SELECT firstPlayed FROM Playerdata WHERE uuid = :uuid)

@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS playerdata (
 	first_played BIGINT NOT NULL,
 	last_played BIGINT NOT NULL,
 	rank SMALLINT NOT NULL DEFAULT 0,
+	owner UUID,
 	PRIMARY KEY (uuid)
 );

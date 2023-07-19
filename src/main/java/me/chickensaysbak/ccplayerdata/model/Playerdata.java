@@ -15,15 +15,17 @@ public class Playerdata {
         @Column(name = "last_played")
         private Long lastPlayed;
         private int rank;
+        private UUID owner;
 
         public Playerdata() {}
 
-        public Playerdata(UUID uuid, String username, Long firstPlayed, Long lastPlayed, int rank) {
+        public Playerdata(UUID uuid, String username, Long firstPlayed, Long lastPlayed, int rank, UUID owner) {
                 this.uuid = uuid;
                 this.username = username;
                 this.firstPlayed = firstPlayed;
                 this.lastPlayed = lastPlayed;
                 this.rank = rank;
+                this.owner = owner;
         }
 
         public void setUuid(UUID uuid) {this.uuid = uuid;}
@@ -31,11 +33,13 @@ public class Playerdata {
         public void setFirstPlayed(Long firstPlayed) {this.firstPlayed = firstPlayed;}
         public void setLastPlayed(Long lastPlayed) {this.lastPlayed = lastPlayed;}
         public void setRank(int rank) {this.rank = rank;}
+        public void setOwner(UUID owner) {this.owner = owner;}
 
         public UUID getUuid() {return uuid;}
         public String getUsername() {return username;}
         public Long getFirstPlayed() {return firstPlayed;}
         public Long getLastPlayed() {return lastPlayed;}
         public int getRank() {return rank;}
+        public UUID getOwner() {return owner;}
 
 }
