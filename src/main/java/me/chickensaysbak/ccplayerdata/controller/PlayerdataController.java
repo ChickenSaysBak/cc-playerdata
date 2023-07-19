@@ -117,6 +117,12 @@ public class PlayerdataController {
         return repository.findAlts(uuid, getPageable(limit));
     }
 
+    @GetMapping("/altowners")
+    @Operation(description = "Retrieves any players that own alt accounts.")
+    public List<Playerdata> findAltOwners(@RequestParam(required = false, defaultValue = "0") Integer limit) {
+        return repository.findAltOwners(getPageable(limit));
+    }
+
     private Pageable getPageable(Integer limit) {
         return limit > 0 ? PageRequest.ofSize(limit) : Pageable.unpaged();
     }

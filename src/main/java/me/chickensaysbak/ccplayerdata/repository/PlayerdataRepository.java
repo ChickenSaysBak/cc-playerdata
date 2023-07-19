@@ -73,4 +73,11 @@ public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUI
             """)
     List<Playerdata> findAlts(UUID uuid, Pageable pageable);
 
+    @Query("""
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
+            FROM Playerdata
+            WHERE uuid IN (SELECT DISTINCT owner FROM Playerdata)
+            """)
+    List<Playerdata> findAltOwners(Pageable pageable);
+
 }
