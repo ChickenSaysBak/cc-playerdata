@@ -15,7 +15,8 @@ REST API for retrieving CozyCloud playerdata.
     "username": "BurgerKing1",
     "firstPlayed": 1556583358213,
     "lastPlayed": 1679198428246,
-    "rank": 5
+    "rank": 5,
+    "owner": null
   }
 ]
 ```
@@ -33,21 +34,38 @@ Data too large to display.
     "username": "BurgerKing1",
     "firstPlayed": 1556583358213,
     "lastPlayed": 1679198428246,
-    "rank": 5
+    "rank": 5,
+    "owner": null
   },
   {
     "uuid": "3d5eee55-8282-4466-9327-1862ff4b575b",
     "username": "JaxF2008",
     "firstPlayed": 1559093933705,
     "lastPlayed": 1679164242614,
-    "rank": 0
+    "rank": 0,
+    "owner": null
   },
   {
     "uuid": "7d929e6e-676c-4548-9ab0-af51eef3f843",
     "username": "Insequent1443",
     "firstPlayed": 1560473253276,
     "lastPlayed": 1679165237974,
-    "rank": 5
+    "rank": 5,
+    "owner": null
+  }
+]
+```
+4. Finding all alt accounts for BurgerKing1 (using the UUID from example 1):
+<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/alts/8f6723ca-c47c-4cd0-b979-14f528b4c82c
+```json
+[
+  {
+    "uuid": "00000000-0000-0000-0009-01f0365451d6",
+    "username": "~BalloonShark396",
+    "firstPlayed": 1597705512806,
+    "lastPlayed": 1637694119449,
+    "rank": 0,
+    "owner": "8f6723ca-c47c-4cd0-b979-14f528b4c82c"
   }
 ]
 ```
