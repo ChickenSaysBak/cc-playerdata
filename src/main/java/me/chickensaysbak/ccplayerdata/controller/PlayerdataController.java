@@ -111,6 +111,12 @@ public class PlayerdataController {
         return repository.findAllByOverlap(uuid, getPageable(limit));
     }
 
+    @GetMapping("/alts/{uuid}")
+    @Operation(description = "Retrieves any alt accounts associated with the player specified by uuid.")
+    public List<Playerdata> findAlts(@PathVariable UUID uuid, @RequestParam(required = false, defaultValue = "0") Integer limit) {
+        return repository.findAlts(uuid, getPageable(limit));
+    }
+
     private Pageable getPageable(Integer limit) {
         return limit > 0 ? PageRequest.ofSize(limit) : Pageable.unpaged();
     }

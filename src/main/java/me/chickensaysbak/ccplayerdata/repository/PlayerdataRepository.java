@@ -66,4 +66,11 @@ public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUI
             """)
     List<Playerdata> findAllByOverlap(UUID uuid, Pageable pageable);
 
+    @Query("""
+            SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)
+            FROM Playerdata
+            WHERE owner = :uuid
+            """)
+    List<Playerdata> findAlts(UUID uuid, Pageable pageable);
+
 }
