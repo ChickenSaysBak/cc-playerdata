@@ -120,6 +120,13 @@ public class PlayerdataController {
         else return repository.findAllByOverlap(uuid, getPageable(limit));
     }
 
+    @GetMapping("/alts")
+    @Operation(description = "Retrieves all accounts that belong to another player.")
+    public List<Playerdata> findAllAlts(@RequestParam(required = false, defaultValue = "0") Integer limit) {
+        return repository.findAllByOwnerIsNotNull(getPageable(limit));
+        
+    }
+
     @GetMapping("/alts/{uuid}")
     @Operation(description = "Retrieves any alt accounts associated with the player specified by uuid.")
     public List<Playerdata> findAlts(@PathVariable UUID uuid, @RequestParam(required = false, defaultValue = "0") Integer limit) {
