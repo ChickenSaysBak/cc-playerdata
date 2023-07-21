@@ -14,10 +14,21 @@ public interface PlayerdataRepository extends ListCrudRepository<Playerdata, UUI
     List<Playerdata> findAll(Pageable pageable);
     List<Playerdata> findAllByOrderByFirstPlayed(Pageable pageable);
     List<Playerdata> findAllByOrderByFirstPlayedDesc(Pageable pageable);
-    Optional<Playerdata> findByUuid(UUID uuid);
     List<Playerdata> findByUsername(String username, Pageable pageable);
     List<Playerdata> findAllByUsernameContainingIgnoreCase(String keyword, Pageable pageable);
     List<Playerdata> findAllByOwnerIsNotNull(Pageable pageable);
+
+    Optional<Playerdata> findByUuid(UUID uuid);
+
+    @Query(value = """
+            SELECT uuid, username,
+              (SELECT MIN(first_played) FROM playerdata WHERE owner = :uuid OR uuid = :uuid) as first_played,
+              (SELECT MAX(last_played) FROM playerdata WHERE owner = :uuid OR uuid = :uuid) as last_played,
+              rank, owner
+            FROM playerdata
+            WHERE uuid = :uuid
+            """, nativeQuery = true)
+    Optional<Playerdata> findByUuidAltsCombined(UUID uuid);
 
     @Query("""
             SELECT new Playerdata(uuid, username, firstPlayed, lastPlayed, rank, owner)

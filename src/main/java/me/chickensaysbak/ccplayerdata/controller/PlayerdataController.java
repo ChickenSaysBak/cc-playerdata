@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -93,8 +94,11 @@ public class PlayerdataController {
 
     @GetMapping("/uuid/{uuid}")
     @Operation(description = "Retrieves the player with the matching uuid.")
-    public Playerdata findByUuid(@PathVariable UUID uuid) {
-        return repository.findByUuid(uuid).orElseThrow(() -> new NoSuchElementException("That player was not found."));
+    public Playerdata findByUuid(@PathVariable UUID uuid,
+                                 @Parameter(description = " Combines the play time of any alt accounts owned by this player.")
+                                 @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
+        Optional<Playerdata> playerData = combineAlts ? repository.findByUuidAltsCombined(uuid) : repository.findByUuid(uuid);
+        return playerData.orElseThrow(() -> new NoSuchElementException("That player was not found."));
     }
 
     @GetMapping("/username/{username}")
