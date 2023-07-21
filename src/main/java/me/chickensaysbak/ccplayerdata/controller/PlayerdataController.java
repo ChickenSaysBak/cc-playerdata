@@ -52,14 +52,20 @@ public class PlayerdataController {
 
     @GetMapping("/most_time")
     @Operation(description = "Retrieves every player ordered by who has the largest time span.")
-    public List<Playerdata> findByMostTime(@RequestParam(required = false, defaultValue = "0") Integer limit) {
-        return repository.findAllByMostTime(getPageable(limit));
+    public List<Playerdata> findByMostTime(@RequestParam(required = false, defaultValue = "0") Integer limit,
+                                           @Parameter(description = "Removes alt accounts and combines their times with the alt owner's account.")
+                                           @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
+        if (combineAlts) return repository.findAllByMostTimeAltsCombined(getPageable(limit));
+        else return repository.findAllByMostTime(getPageable(limit));
     }
 
     @GetMapping("/least_time")
     @Operation(description = "Retrieves every player ordered by who has the smallest time span.")
-    public List<Playerdata> findByLeastTime(@RequestParam(required = false, defaultValue = "0") Integer limit) {
-        return repository.findAllByLeastTime(getPageable(limit));
+    public List<Playerdata> findByLeastTime(@RequestParam(required = false, defaultValue = "0") Integer limit,
+                                            @Parameter(description = "Removes alt accounts and combines their times with the alt owner's account.")
+                                            @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
+        if (combineAlts) return repository.findAllByLeastTimeAltsCombined(getPageable(limit));
+        else return repository.findAllByLeastTime(getPageable(limit));
     }
 
     @GetMapping("/rank")
@@ -107,8 +113,11 @@ public class PlayerdataController {
     @GetMapping("/overlap/{uuid}")
     @Operation(description = "Retrieves any players with time spans overlapping the player specified by uuid. " +
             "The resulting players are ordered by most similar time span.")
-    public List<Playerdata> findByOverlap(@PathVariable UUID uuid, @RequestParam(required = false, defaultValue = "0") Integer limit) {
-        return repository.findAllByOverlap(uuid, getPageable(limit));
+    public List<Playerdata> findByOverlap(@PathVariable UUID uuid, @RequestParam(required = false, defaultValue = "0") Integer limit,
+                                          @Parameter(description = "Removes alt accounts and combines their times with the alt owner's account.")
+                                          @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
+        if (combineAlts) return repository.findAllByOverlapAltsCombined(uuid, getPageable(limit));
+        else return repository.findAllByOverlap(uuid, getPageable(limit));
     }
 
     @GetMapping("/alts/{uuid}")
