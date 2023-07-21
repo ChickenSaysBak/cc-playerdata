@@ -55,8 +55,8 @@ public class PlayerdataController {
     public List<Playerdata> findByMostTime(@RequestParam(required = false, defaultValue = "0") Integer limit,
                                            @Parameter(description = "Removes alt accounts and combines their times with the alt owner's account.")
                                            @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
-        if (combineAlts) return repository.findAllByMostTimeAltsCombined(getPageable(limit));
-        else return repository.findAllByMostTime(getPageable(limit));
+        return combineAlts ? repository.findAllByMostTimeAltsCombined(getPageable(limit)) :
+                repository.findAllByMostTime(getPageable(limit));
     }
 
     @GetMapping("/least_time")
@@ -64,8 +64,8 @@ public class PlayerdataController {
     public List<Playerdata> findByLeastTime(@RequestParam(required = false, defaultValue = "0") Integer limit,
                                             @Parameter(description = "Removes alt accounts and combines their times with the alt owner's account.")
                                             @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
-        if (combineAlts) return repository.findAllByLeastTimeAltsCombined(getPageable(limit));
-        else return repository.findAllByLeastTime(getPageable(limit));
+        return combineAlts ? repository.findAllByLeastTimeAltsCombined(getPageable(limit)) :
+                repository.findAllByLeastTime(getPageable(limit));
     }
 
     @GetMapping("/rank")
@@ -116,15 +116,14 @@ public class PlayerdataController {
     public List<Playerdata> findByOverlap(@PathVariable UUID uuid, @RequestParam(required = false, defaultValue = "0") Integer limit,
                                           @Parameter(description = "Removes alt accounts and combines their times with the alt owner's account.")
                                           @RequestParam(required = false, defaultValue = "false") Boolean combineAlts) {
-        if (combineAlts) return repository.findAllByOverlapAltsCombined(uuid, getPageable(limit));
-        else return repository.findAllByOverlap(uuid, getPageable(limit));
+        return combineAlts ? repository.findAllByOverlapAltsCombined(uuid, getPageable(limit))
+                : repository.findAllByOverlap(uuid, getPageable(limit));
     }
 
     @GetMapping("/alts")
     @Operation(description = "Retrieves all accounts that belong to another player.")
     public List<Playerdata> findAllAlts(@RequestParam(required = false, defaultValue = "0") Integer limit) {
         return repository.findAllByOwnerIsNotNull(getPageable(limit));
-        
     }
 
     @GetMapping("/alts/{uuid}")
