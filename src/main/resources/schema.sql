@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS playerdata (
 	owner UUID,
 	PRIMARY KEY (uuid)
 );
+
+CREATE INDEX IF NOT EXISTS ix_playerdata_owner ON "playerdata" ("owner");
