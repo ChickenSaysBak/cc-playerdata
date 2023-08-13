@@ -1,13 +1,13 @@
 # cc-playerdata
 REST API for retrieving CozyCloud playerdata.
 
-[![Documentation](https://img.shields.io/badge/Documentation-dark%20green?logo=swagger&logoColor=black)](https://cc-playerdata-webapp.azuremicroservices.io)
+[![Documentation](https://img.shields.io/badge/Documentation-dark%20green?logo=swagger&logoColor=black)](http://cc-playerdata-app.us-east-2.elasticbeanstalk.com)
 [![Discord](https://img.shields.io/discord/280048938000580609?logo=discord&logoColor=white&label=Discord&color=7289da)](https://discord.gg/vBEWAuY)
 
 ## Example usage
 
 1. Retrieving data for the player named BurgerKing1:
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/username/BurgerKing1
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/username/BurgerKing1
 ```json
 [
   {
@@ -21,12 +21,12 @@ REST API for retrieving CozyCloud playerdata.
 ]
 ```
 2. Retrieving all players that played when BurgerKing1 did (using the UUID from the previous response):
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/overlap/8f6723ca-c47c-4cd0-b979-14f528b4c82c
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/overlap/8f6723ca-c47c-4cd0-b979-14f528b4c82c
 ```
 Data too large to display.
 ```
 3. Limiting the previous request to just 3 players:
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/overlap/8f6723ca-c47c-4cd0-b979-14f528b4c82c?limit=3
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/overlap/8f6723ca-c47c-4cd0-b979-14f528b4c82c?limit=3
 ```json
 [
   {
@@ -56,7 +56,7 @@ Data too large to display.
 ]
 ```
 4. Finding all alt accounts for BurgerKing1 (using the UUID from example 1):
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/alts/8f6723ca-c47c-4cd0-b979-14f528b4c82c
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/alts/8f6723ca-c47c-4cd0-b979-14f528b4c82c
 ```json
 [
   {
@@ -79,12 +79,12 @@ Data too large to display.
 ```
 #### More examples
 * Retrieving all data:
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata
 * Retrieving the top 10 players with the longest time spans:
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/most_time?limit=10
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/most_time?limit=10
 * Retrieving players with usernames containing "diamond":
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/search/diamond
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/search/diamond
 * Retrieving all players with elder rank:
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/rank/4
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/rank/4
 <br>OR
-<br>https://cc-playerdata-webapp.azuremicroservices.io/api/playerdata/rank/elder
+<br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/rank/elder
