@@ -19,7 +19,7 @@ public class OpenApiConfig {
         Info info = new Info()
                 .title("CozyCloud Playerdata API")
                 .description("REST API for retrieving CozyCloud playerdata. Find example usage on the GitHub page below.")
-                .version("1.1.2")
+                .version("1.1.3")
                 .contact(contact);
 
         return new OpenAPI().info(info);
