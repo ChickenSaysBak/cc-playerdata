@@ -10,3 +10,5 @@ springdoc:
   swagger-ui:
     use-root-path: true
     operationsSorter: alpha
+server:
+  port: 5000
