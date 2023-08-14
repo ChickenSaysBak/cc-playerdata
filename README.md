@@ -88,3 +88,10 @@ Data too large to display.
 <br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/rank/4
 <br>OR
 <br>http://cc-playerdata-app.us-east-2.elasticbeanstalk.com/api/playerdata/rank/elder
+
+## HTTPS
+If an HTTPS endpoint is required, you can use the following:
+<br>https://fjbpf3sb3r4dpjauqwzebltr2y0gsqxa.lambda-url.us-east-2.on.aws
+
+Simply add the desired path to the end of the url such as `/api/playerdata`
+<br>See repository [here](https://github.com/ChickenSaysBak/cc-playerdata-to-https).
