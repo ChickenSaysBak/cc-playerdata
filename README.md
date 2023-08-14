@@ -4,6 +4,9 @@ REST API for retrieving CozyCloud playerdata.
 [![Documentation](https://img.shields.io/badge/Documentation-dark%20green?logo=swagger&logoColor=black)](http://cc-playerdata-app.us-east-2.elasticbeanstalk.com)
 [![Discord](https://img.shields.io/discord/280048938000580609?logo=discord&logoColor=white&label=Discord&color=7289da)](https://discord.gg/vBEWAuY)
 
+## Projects using this
+* [cc-timeline](https://github.com/ChickenSaysBak/cc-timeline) - An interactive timeline that maps CozyCloud's community throughout the years.
+
 ## Example usage
 
 1. Retrieving data for the player named BurgerKing1:
